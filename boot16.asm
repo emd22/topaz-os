@@ -1,323 +1,183 @@
+[ORG 0]
 [BITS 16]
-[CPU 386]
 
-ImageLoadSeg            equ 0x60
-StackSize               equ 2048
-
-; origin 0
-ORG 0
-
-base_address:
-bsDriveNumber:
-    jmp short start16
+entry16:
+    jmp boot16
     nop
 
-bsOemName db "TOPAZ OS"
+_bpb:
+	bpbOem						db "TOPAZ OS"		; OEM name or version
+	bpbBytesPerSector			dw 0			    ; Bytes per Sector (512)
+	bpbSectorsPerCluster		db 0				; Sectors per cluster (usually 1)
+	bpbReservedSectors			dw 0			    ; Reserved sectors
+	bpbTotalFATs				db 0			    ; FAT copies
+	bpbRootEntries				dw 0			    ; Root directory entries
+	bpbFat12TotalSectors		dw 0			    ; Sectors in filesystem (0 for FAT16)
+	bpbMediaDescriptor			db 0				; Media descriptor type (f0 for floppy or f8 for HDD)
+	bpbSectorsPerFAT			dw 0			    ; Sectors per FAT
+	bpbSectorsPerTrack			dw 0			    ; Sectors per track
+	bpbHeadsPerCylinder			dw 0			    ; Heads per cylinder
+	bpbHiddenSectors			dd 0		        ; Number of hidden sectors (0)
+	bpbTotalSectors				dd 0		        ; Number of sectors in the filesystem
+	bpbDriveNumber				db 0				; Sectors per FAT
+	bpbCurrentHead				db 0				; Reserved (used to be current head)
+	bpbSignature				db 0				; Extended signature (indicates we have serial, label, and type)
+	bpbSerial					dd 0		        ; Serial number of partition
+	bpbDiskLabel				db "TOPAZ  DISK"	; Volume label
+	bpbFileSystem				db "FAT16   "		; Filesystem type
 
-; BPB table
-bpbBytesPerSector          dw 0
-bpbSectorsPerCluster       db 0
-bpbReservedSectors         dw 0
-bpbNumberOfFATs            db 0
-bpbRootEntries             dw 0
-bpbTotalSectors            dw 0
-bpbMedia                   db 0
-bpbSectorsPerFAT           dw 0
-bpbSectorsPerTrack         dw 0
-bpbHeadsPerCylinder        dw 0
-bpbHiddenSectors           dd 0
-bpbTotalSectorsBig         dd 0
-
-; EBPB table
-ebpbSectorsPerFAT32        dd 0
-ebpbExtendedFlags          dw 0
-ebpbFSVersion              dw 0
-ebpbRootDirectoryClusterNo dd 0
-ebpbFSInfoSectorNo         dw 0
-ebpbBackupBootSectorNo     dw 0
-
-; 12 bytes of reserved space
-ebpbResv0 dq 0
-ebpbResv1 dd 0
-
-ebpbDriveNumber            db 0
-ebpbResv2                  db 0
-ebpbExtendedBootSignature  db 0
-ebpbVolumeSerialNumber     dd 0
-ebpbVolumeLabel            db "NO NAME    "
-ebpbFileSystemName         db "FAT32   "
-
-; real mode entry point (this is our start)
-start16:
-    cld ; clear memory direction bit
-
-    int     0x12  ; get memory size in kb
-    shl     ax, 6 ; convert size to to 16-byte paragraphs
-
-    ; reserve memory for our bootstrap and our stack, divide by 16 to get our segment.
-    ; Segment = (TopOfMemory - (512 + OurStackSize)) / 16
-
-    sub     ax, (512 + StackSize) / 16
-    mov     es, ax                  ; segment for extra data
-    mov     ss, ax                  ; setup our stack segment
-
-    ; stack starts at the top, adjust to our stack size + size of our sector
-
-    mov     sp, 512 + StackSize     ; setup our stack pointer
-
-    ; copy our sector to the top of memory, to avoid memory conflicts
-
-    mov     cx, 256                 ; repeat word copy 256 times
-    mov     si, 7C00h               ; memory source
-    xor     di, di
-    mov     ds, di
-    rep     movsw
-
-    ; jump to the copy
-    push    es
-    push    byte boot16             ; push our new jump point
-    retf                            ; jump to our boot16(this also refreshes segments)
-
-boot16:
-    push    cs
-    pop     ds ; ds = cs
-
-    mov     [bsDriveNumber], dl     ; store boot drive
-
-    ; check for drive extensions for LBA disk operations
-    mov     ah, 41h
-    mov     bx, 0x55AA
-    int     13h
-    jc      no_extensions
-    sub     bx, 0xAA55
-    jnz     no_extensions
-    shr     cx, 1
-    jc      found_extensions
-
-no_extensions:
-    jmp     read_error
-
-found_extensions:
-    ; bx = 0, es:bx is our buffer for root dir and stage 2 file
-    push    ImageLoadSeg
-    pop     es
+_data:
+	dataSector                  dw 0				; Stores our data sector
+	fileCluster                 dw 0				; Stores the cluster of the strap file
+chs:
+    chsTrack                    db 0				; Stores the track\cylinder for LBAToCHS
+    chsHead                     db 0				; Stores the head for LBAToCHS
+    chsSector                   db 0				; Stores the sector for LBAToCHS
 
 
-    ; load all clusters of the root dir
-load_root_dir:
-    and     byte [bx+(ebpbRootDirectoryClusterNo-base_address)+3], 0Fh ; mask cluster value
-    mov     ebp, [bx+(ebpbRootDirectoryClusterNo-base_address)]        ; ebp=cluster # of root dir
-
-root_dir_read_next:
-    push    es
-    call    read_cluster             ; read one cluster of root dir ; cx = 0
-    pop     es
-    pushf                            ; save carry="not last cluster" flag
-
-    ; es:di is the root entries buffer
-    mov     di, bx
-
-    ; move and zero extend our byte
-    movzx   ax, byte [bx+(bpbSectorsPerCluster-base_address)]
-    ; ax is our bytes per cluster
-    mul     word [bx+(bpbBytesPerSector-base_address)]
-
-find_file:
-    ; ds:si is the program name
-    mov     si, ProgramName         ; ds:si -> program name
-    ; 11 characters for a fat32 filename
-    mov     cl, 11
-    ; we are at the end of our root directory, file not found
-    cmp     byte [es:di], ch
-    je      file_not_found
-
-    ; string compare
-    push    di
-    repe    cmpsb
-    pop     di
-    ; found file, go to next
-    je      file_found
-    ; go to next dir entry
-    add     di, 32
-    ; check if we are at end
-    cmp     di, ax
-    ; are not, go to next file
-    jne     find_file
-
-    ; restore carry flag since we are not at last cluster
-    popf
-    ; go to next cluster of root dir
-    jc      root_dir_read_next
-file_not_found:
-    call    error
-    db      "E.NOFILE", 0
-file_found:
-    push    word [es:di + 0x14]
-    push    word [es:di + 0x1A]
-    pop     ebp                     ; ebp = file cluster no.
-
-    push    es
-
-    ; load our file
-
-file_read_cluster:
-    call    read_cluster             ; read one cluster of file
-    ; not EOF, continue reading clusters
-    jc file_read_cluster
-
-    mov     dl, [bx+(bsDriveNumber-base_address)] ; pass the BIOS boot drive
-
-    pop     ax                      ; ImageLoadSeg
-    mov     ds, ax                  ; ax=ds=seg the file is loaded to
-
-    sub     ax, 10h                 ; "org 100h" stuff :)
-    mov     es, ax
-    mov     ds, ax
-    mov     ss, ax
-    xor     sp, sp
-    mov     bh, 1                   ; ax:bx = cs:ip of entry point
-    jmp     short enter_stage2
-
-enter_stage2:
-    push    ax
-    push    bx
-
-    ; jump to our stage 2 bootloader!
-    retf
-
-; read_cluster:
-;
-; input:
-;   es:bx -> pointer to buffer
-;   ebp   -> cluster number to read
-; output:
-;   ebp   -> next cluster
-;   es    -> next address segment
-
-read_cluster:
-    lea     esi, [ebp-2]                    ; esi=prev cluster # - 2
-
-    mov     ax, [bx+(bpbBytesPerSector-base_address)]
-    shr     ax, 2                           ; ax=# of FAT32 entries per sector
-    cwde                                    ; eax=# of FAT32 entries per sector
-    xchg    eax, ebp
-    cdq
-    div     ebp                             ; eax=FAT sector #, edx=entry # in sector
-
-    mov     cx, 1
-    push    es
-    call    read_sector                     ; read 1 FAT32 sector
-    pop     es
-
-    imul    di, dx, 4
-    and     byte [es:bx+di+3], 0Fh          ; mask cluster value
-    mov     ebp, [es:bx+di]                 ; ebp=next cluster #
-
-    ; get the size of our FAT
-    movzx   eax, byte [bx+(bpbNumberOfFATs-base_address)]
-    mul     dword [bx+(ebpbSectorsPerFAT32-base_address)]
-
-    xchg    eax, esi
-
-    movzx   ecx, byte [bx+(bpbSectorsPerCluster-base_address)] ; ecx = sector count
-    mul     ecx
-
-    add     eax, esi                        ; eax=LBA (relative to 1st FAT start)
-
-; read_sector:
-;
-; input:
-;   eax   -> lba
-;   cx    -> sector count
-;   es:bx -> buffer pointer
-; output:
-;   eax   -> next lba
-;   es    -> next address segment
-read_sector:
-    ; max 5 retry attempts
-    mov     di, 5
-
-read_sector_try:
-    pushad
-
-    ; we use 32 bit registers here so we don't overflow
-    movzx   edx, word [bx+(bpbReservedSectors-base_address)]
-    add     eax, edx
-
-    xor     dx, dx
-    add     eax, [bx+(bpbHiddenSectors-base_address)]
-    adc     dx, bx
-
-    push    edx                     ; lba high bits
-    push    eax                     ; lba low bits
-    push    es                      ; memory buffer segment
-    push    bx                      ; memory buffer offset
-    push    byte 1                  ; sector count
-    ; reserved, set to 0
-    push    byte 0x10 ; DAP size 16
-
-    mov     si, sp                  ; ds:si is our DAP
-
-    mov     ah, 0x42                ; 0x42 -> read sectors by LBA addressing
-    mov     dl, [bx+(bsDriveNumber-base_address)]
-    int     0x13                    ; read sectors
-
-    lea     sp, [si+16]             ; remove DAP from stack
-
-    jnc     read_sector_done        ; carry is zero if there is no error
-    mov     ah, 0                   ; set function to disk reset
-    int     0x13                    ; reset drive
-
-    popad
-
-    ; first attempt failed, retry.
-    ; this used to be very important in the days of floppy disks, and
-    ; even in the days of CD-ROMs. Not really as necessary anymore, but
-    ; better to be safe.
-    dec     di
-    jnz     short read_sector_try
-
-read_error:
-    call    error
-    db      "E.READ", 0
-
-read_sector_done:
-    mov     dx, [bx+(bpbBytesPerSector-base_address)]
-    shr     dx, 4                   ; dx = sector size in paragraphs
-    mov     ax, es
-    add     ax, dx
-    mov     es, ax                  ; es updated
-
-    popad
-
-    inc     eax                     ; adjust LBA for next sector
-
-    loop    read_sector             ; if not last sector
-
-read_cluster_continue:
-    cmp     ebp, 0FFFFFF8h          ; carry is set to zero if we are at our last cluster
-
+print_msg:
+    push si
+    mov si, ErrorMsg
+    call prints
+    pop si
+    call prints
     ret
 
-error:
-    ; get our string pointer, set up for printing
-    pop     si
-    mov     ah, 0x0E
-    mov     bx, 7
+prints:
+    lodsb                ; load byte from string
+    or      al, al	     ; check if we are at null terminator
+    jz      prints.done	 ; end of string
+    mov	    ah,	0eh	     ; al = character to print, ah = colour code
+    int	    10h          ; call graphics interrupt
+    jmp	    prints       ; repeat
+prints.done:
+    ret
 
-error_next:
-    lodsb
-.1:
+boot16:
+	cli
+	mov     ax, 0x07c0							; set our segment registers to 0x00:0x07C0, our current location.
+	mov     ds, ax                              ; note that our segment is our  memory location divided by 10.
+	mov     es, ax
+	mov     fs, ax
+	mov     gs, ax
+
+	mov     ax, 0								; set our stack to 0x00:0xFFFF
+	mov     ss, ax                              ; this is the highest pointer of a single segment we can register
+	mov     sp, 0xFFFF                          ; in real mode.
+	sti
+
+	mov     [bpbDriveNumber], dl                ; store drive number
+
+
+    mov     ax, 50h                             ; move our extra segment to 50h, the location to store our
+    mov     es, ax                              ; stage 2 image.
+
+    mov     ax, 1                               ; load sector 1, the sector immediately after our current sector.
+    mov     word[dataSector], ax                ; this should contain our second stage.
+
+    mov     cx, 8                               ; read 8 sectors(4kb), this includes our second and third stage.
+
+    mov     bx, 00h                             ; set our buffer location to be 50h:0
+    call    read_sectors
+
+    jmp     50h:00h                             ; jmp to stage 2
+
+    cli
+.0:
     hlt
-    test    al, al
-    jz      .1
-    int     0x10
-    jmp     short error_next
+    jmp .0
 
-ProgramName db "STAGE2  BIN"
+; lba_to_chs:
+; inputs:
+;   ax: lba address to convert to chs
+; outputs:
+;   chsTrack, chsHead, chsSector
+lba_to_chs:
+	; Based on the equation Sector = (LBA % Sectors per Track) + 1
 
-; pad extra space
-times (510-($-$$)) db 0
+	xor     dx, dx
+	div     word[bpbSectorsPerTrack]				; Calculate the modulo (in DL)
+	inc     dl
+	mov     byte[chsSector], dl					; Store it
+	
+	; Based on the equation Head = (LBA / Sectors per Track) % Heads per Cylinder
+	xor     dx, dx
+	div     WORD [bpbHeadsPerCylinder]				; AX already contains LBA / Sectors per Track
+	mov     byte[chsHead], dl
+	
+	; Based on the equation Track = LBA / (Sectors per Track * Number of Heads)
+	mov     byte[chsTrack], al						; Very conveniently-placed AX; it already contains the output!
+	
+	ret
 
-; boot sector signature
-dw 0xAA55
+; read_sectors:
+; inputs:
+;   cx - sector count
+;   ax - sector seek address
+;   es:bx - destination address
+read_sectors:
+	mov     di, 5                               ; max amount of read attempts
+	
+read_sectors.loop:
+    push    ax
+    push    bx
+    push    cx
+
+    call    lba_to_chs
+
+    mov     ah, 02h								; function -> read sectors
+    mov     al, 1								; read one sector at a time, some bios implementations can get messy...
+    mov     ch, byte[chsTrack]
+    mov     cl, byte[chsSector]
+    mov     dh, byte[chsHead]
+    mov     dl, byte[bpbDriveNumber]
+    int     13h
+    jnc     read_sectors.success
+
+    ; error while reading, reset disk and try again.
+    mov     ah, 00h								; function -> reset disk
+    int     13h									; reset disk
+
+    dec     di									; decrement our attempt counter
+
+    pop     cx
+    pop     bx
+    pop     ax
+
+    jnz     read_sectors.loop					; try again
+    jmp     read_sectors.fail					; we hit zero, must be an error.
+
+read_sectors.success:
+    ; DEBUG
+
+    pop     cx
+    pop     bx
+    pop     ax
+
+    add     bx, word[bpbBytesPerSector]		; Go to the next memory location
+    inc     ax									; Read from the next sector
+    loop    read_sectors
+
+    mov     si, SecondStageMsg
+    call    print_msg
+
+    ret
+read_sectors.fail:
+    mov     si, ReadErrorMsg
+    call    print_msg
+
+    pop     cx
+    pop     bx
+    pop     ax
+
+    int     18h
+    ret
+
+; Topaz bootloader stage 1
+ErrorMsg        db "TZ.S1: ", 0
+
+ReadErrorMsg    db "Disk read error", 13, 10, 0
+SecondStageMsg  db "Read second stage", 13, 10, 0
+
+times 510-($-$$) db 0
+dw 0AA55h

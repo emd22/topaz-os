@@ -1,24 +1,6 @@
 # ninja log v5
-0	25	1685813106763216276	build.ninja	8be6171d4b44f986
-0	59	1685813083773044695	CMakeFiles/DiskBuilder.dir/src/DiskBuilder.c.o	9cdb01ada73ede95
-0	57	1685812125059112275	CMakeFiles/DiskBuilder.dir/DiskBuilder.c.o	89f67962aeb78b76
-59	167	1685813083886378875	DiskBuilder	dc40122ee03b5f7d
-0	69	1685811664808751338	CMakeFiles/DiskBuilder.dir/CMakeFiles/3.25.2/CompilerIdC/CMakeCCompilerId.c.o	ca0068fca3e11f4d
-0	44	1685813152966894261	CMakeFiles/DiskBuilder.dir/src/DiskBuilder.c.o	9cdb01ada73ede95
-44	84	1685813153006894560	DiskBuilder	dc40122ee03b5f7d
-0	40	1685813183343787404	CMakeFiles/DiskBuilder.dir/src/DiskBuilder.c.o	9cdb01ada73ede95
-40	77	1685813183380454344	DiskBuilder	dc40122ee03b5f7d
-0	53	1685813213364085729	CMakeFiles/DiskBuilder.dir/src/DiskBuilder.c.o	9cdb01ada73ede95
-53	120	1685813213430753093	DiskBuilder	dc40122ee03b5f7d
-0	104	1685813266187963884	CMakeFiles/DiskBuilder.dir/src/DiskBuilder.c.o	9cdb01ada73ede95
-104	179	1685813266291298270	DiskBuilder	dc40122ee03b5f7d
-0	44	1685813300854980820	CMakeFiles/DiskBuilder.dir/src/DiskBuilder.c.o	9cdb01ada73ede95
-44	87	1685813300898314588	DiskBuilder	dc40122ee03b5f7d
-0	48	1685813329138595962	CMakeFiles/DiskBuilder.dir/src/DiskBuilder.c.o	9cdb01ada73ede95
-48	86	1685813329178596358	DiskBuilder	dc40122ee03b5f7d
-0	37	1685813493456838915	CMakeFiles/DiskBuilder.dir/src/DiskBuilder.c.o	9cdb01ada73ede95
-38	82	1685813493500172652	DiskBuilder	dc40122ee03b5f7d
-0	38	1685813535853897803	CMakeFiles/DiskBuilder.dir/src/DiskBuilder.c.o	9cdb01ada73ede95
-38	76	1685813535890564806	DiskBuilder	dc40122ee03b5f7d
+0	25	1687141978080222477	build.ninja	8be6171d4b44f986
 0	47	1685813551377373464	CMakeFiles/DiskBuilder.dir/src/DiskBuilder.c.o	9cdb01ada73ede95
+0	57	1685812125059112275	CMakeFiles/DiskBuilder.dir/DiskBuilder.c.o	89f67962aeb78b76
 47	103	1685813551430707285	DiskBuilder	dc40122ee03b5f7d
+0	69	1685811664808751338	CMakeFiles/DiskBuilder.dir/CMakeFiles/3.25.2/CompilerIdC/CMakeCCompilerId.c.o	ca0068fca3e11f4d

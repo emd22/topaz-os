@@ -4,12 +4,14 @@ ENTRY(_start)
 phys = 0x00100000;
 SECTIONS
 {
-    .text  0x100000 : {
+    . = 0x100000;
+    .text : {
       code = .; _code = .; __code = .;
       *(.text)
     }
     .data  : {
       data = .; _data = .; __data = .;
+      *(.rodata);
       *(.data)
     }
     .bss  :

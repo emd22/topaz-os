@@ -1,20 +1,19 @@
 #ifndef TOPAZ_OS_TYPES_H
 #define TOPAZ_OS_TYPES_H
 
-#include <stdint.h>
+typedef unsigned long UInt32;
+typedef UInt32 UInt;
+typedef unsigned short UInt16;
+typedef unsigned char  UInt8;
+typedef unsigned char    UChar;
 
-typedef uint32_t UInt;
-typedef uint32_t UInt32;
-typedef uint16_t UInt16;
-typedef uint8_t  UInt8;
-typedef UInt8    UChar;
+typedef long Int;
+typedef long Int32;
+typedef short Int16;
+typedef char  Int8;
+typedef Int8  Char;
 
-typedef int32_t Int;
-typedef int32_t Int32;
-typedef int16_t Int16;
-typedef int8_t  Int8;
-typedef Int8    Char;
-
+#define TZ_PACK __attribute__((packed))
 
 
 

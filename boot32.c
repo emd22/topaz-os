@@ -1,5 +1,7 @@
 #include "src/Types.h"
-#include "Isr.h"
+#include "Interrupt.h"
+
+#define NULL (void *)0
 
 void printc(char ch, int color);
 void prints(const char *str, int color);
@@ -14,6 +16,11 @@ extern void _asm_IdtFlush(UInt32 idtp);
 
 void TzGdtInit();
 void TzIdtInit();
+
+inline void TzOut8(UInt16 port, UInt8 value);
+inline UInt8 TzIn8(UInt16 port);
+
+void TzRegisterIrq(UInt8 int_no, TzIrqHandle handler);
 
 // start of our 32 bit bootloader
 extern void _start(void) {
@@ -86,6 +93,31 @@ void TzPrintString(Char *str) {
     prints(str, (TzGetBackgroundColor() << 4) | (TzGetForegroundColor() & 0x0F));
 }
 
+
+void TzTimerCallback(TzRegisterList registers) {
+    TzPrintString("x");
+}
+
+
+void TzInitTimer(UInt32 freq) {
+    TzRegisterIrq(TZ_IRQ0, TzTimerCallback);
+
+    UInt32 divisor = 1193180 / freq;
+
+    // send command
+    TzOut8(0x43, 0x36);
+
+    UInt8 lo = (UInt8)(divisor & 0xFF);
+    UInt8 hi = (UInt8)((divisor >> 8) & 0xFF);
+
+    TzOut8(0x40, lo);
+    TzOut8(0x40, hi);
+}
+
+
+
+
+
 void kmain(void) {
     TzBackgroundColorSet(TZ_COLOR_CYAN);
     TzForegroundColorSet(TZ_COLOR_YELLOW);
@@ -99,6 +131,12 @@ void kmain(void) {
     TzPrintString("GDT [OK] ");
     TzIdtInit();
     TzPrintString("IDT [OK]\n");
+
+    __asm__("sti\n");
+
+    TzInitTimer(50);
+    TzPrintString("TIMER [OK]\n");
+
 
 //    TzPagingInit();
 }
@@ -217,6 +255,7 @@ typedef struct {
 TzIdtEntry idt_entries[256];
 TzIdtPtr   idt_ptr;
 
+TzIrqHandle interrupt_handlers[256];
 
 
 void TzIdtSetGate(Int8 num, UInt32 base, UInt16 selector, UInt8 flags) {
@@ -229,18 +268,73 @@ void TzIdtSetGate(Int8 num, UInt32 base, UInt16 selector, UInt8 flags) {
     entry->flags = flags;
 }
 
-typedef struct {
-    UInt32 ds;
-    UInt32 edi, esi, ebp, esp, ebx, edx, ecx, eax;
-    UInt32 int_no, err_code;
-    UInt32 eip, cs, eflags, useresp, ss;
-} TZ_PACK TzRegStack;
+
+inline void TzOut8(UInt16 port, UInt8 value) {
+    __asm__("outb %0, %1" : : "a"(value), "Nd"(port) : "memory");
+}
+
+inline UInt8 TzIn8(UInt16 port) {
+    UInt8 value;
+    __asm__("inb %1, %0" : "=a"(value) : "Nd"(port) : "memory");
+    return value;
+}
+
+void TzRegisterIrq(UInt8 int_no, TzIrqHandle handler) {
+    interrupt_handlers[int_no] = handler;
+}
 
 
-extern void TzIdtFaultHandler(TzRegStack registers) {
+extern void TzIrqHandler(TzRegisterList registers) {
+    if (registers.int_no >= 40) {
+        // Reset slave
+        TzOut8(0xA0, 0x20);
+    }
+    // Reset master
+    TzOut8(0x20, 0x20);
+
+    if (interrupt_handlers[registers.int_no] != 0) {
+        TzIrqHandle handler = interrupt_handlers[registers.int_no];
+        handler(registers);
+    }
+
+}
+
+extern void TzIdtFaultHandler(TzRegisterList registers) {
     __asm__("cli\n");
-    TzPrintString("Unhandled Interrupt");
     __asm__("sti\n");
+}
+
+void TzSetupIrqs() {
+    // Remap the IDT!
+    TzOut8(0x20, 0x11);
+    TzOut8(0xA0, 0x11);
+    TzOut8(0x21, 0x20);
+    TzOut8(0xA1, 0x28);
+    TzOut8(0x21, 0x04);
+    TzOut8(0xA1, 0x02);
+    TzOut8(0x21, 0x01);
+    TzOut8(0xA1, 0x01);
+    TzOut8(0x21, 0x00);
+    TzOut8(0xA1, 0x00);
+
+    // Setup our IRQ gates
+    TzIdtSetGate(32, (UInt32)_irq0, 0x08, 0x8E);
+    TzIdtSetGate(33, (UInt32)_irq1, 0x08, 0x8E);
+    TzIdtSetGate(34, (UInt32)_irq2, 0x08, 0x8E);
+    TzIdtSetGate(35, (UInt32)_irq3, 0x08, 0x8E);
+    TzIdtSetGate(36, (UInt32)_irq4, 0x08, 0x8E);
+    TzIdtSetGate(37, (UInt32)_irq5, 0x08, 0x8E);
+    TzIdtSetGate(38, (UInt32)_irq6, 0x08, 0x8E);
+    TzIdtSetGate(39, (UInt32)_irq7, 0x08, 0x8E);
+    TzIdtSetGate(40, (UInt32)_irq8, 0x08, 0x8E);
+    TzIdtSetGate(41, (UInt32)_irq9, 0x08, 0x8E);
+    TzIdtSetGate(42, (UInt32)_irq10, 0x08, 0x8E);
+    TzIdtSetGate(43, (UInt32)_irq11, 0x08, 0x8E);
+    TzIdtSetGate(44, (UInt32)_irq12, 0x08, 0x8E);
+    TzIdtSetGate(45, (UInt32)_irq13, 0x08, 0x8E);
+    TzIdtSetGate(46, (UInt32)_irq14, 0x08, 0x8E);
+    TzIdtSetGate(47, (UInt32)_irq15, 0x08, 0x8E);
+
 }
 
 void TzIdtInit() {
@@ -283,6 +377,8 @@ void TzIdtInit() {
     TzIdtSetGate(29, (UInt32)_isr29, 0x08, 0x8E);
     TzIdtSetGate(30, (UInt32)_isr30, 0x08, 0x8E);
     TzIdtSetGate(31, (UInt32)_isr31, 0x08, 0x8E);
+
+    TzSetupIrqs();
 
     _asm_IdtFlush((UInt32)&idt_ptr);
 }

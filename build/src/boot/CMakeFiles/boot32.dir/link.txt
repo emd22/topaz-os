@@ -1,0 +1,1 @@
+/usr/bin/cc -Os -m32 -fno-pie -ffreestanding -nostdlib -nostdinc -fno-stack-protector -nostartfiles  -Wl,--oformat=binary,-T/home/emd22/Projects/topaz-os/src/boot/linker.ld,-melf_i386 CMakeFiles/boot32.dir/b32strap.S.o CMakeFiles/boot32.dir/boot32.c.o -o ../../boot32 

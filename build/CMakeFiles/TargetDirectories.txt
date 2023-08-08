@@ -1,7 +1,7 @@
 /home/emd22/Projects/topaz-os/build/CMakeFiles/edit_cache.dir
 /home/emd22/Projects/topaz-os/build/CMakeFiles/rebuild_cache.dir
-/home/emd22/Projects/topaz-os/build/src/boot/CMakeFiles/boot32.dir
-/home/emd22/Projects/topaz-os/build/src/boot/CMakeFiles/edit_cache.dir
-/home/emd22/Projects/topaz-os/build/src/boot/CMakeFiles/rebuild_cache.dir
-/home/emd22/Projects/topaz-os/build/src/boot/boot16/CMakeFiles/edit_cache.dir
-/home/emd22/Projects/topaz-os/build/src/boot/boot16/CMakeFiles/rebuild_cache.dir
+/home/emd22/Projects/topaz-os/build/src/CMakeFiles/Boot32.dir
+/home/emd22/Projects/topaz-os/build/src/CMakeFiles/edit_cache.dir
+/home/emd22/Projects/topaz-os/build/src/CMakeFiles/rebuild_cache.dir
+/home/emd22/Projects/topaz-os/build/src/boot/Boot16/CMakeFiles/edit_cache.dir
+/home/emd22/Projects/topaz-os/build/src/boot/Boot16/CMakeFiles/rebuild_cache.dir

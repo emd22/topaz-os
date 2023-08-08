@@ -1,0 +1,6 @@
+#ifndef TOPAZ_MEMORY_TZMEM_H
+#define TOPAZ_MEMORY_TZMEM_H
+
+
+
+#endif

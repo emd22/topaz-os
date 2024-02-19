@@ -76,7 +76,7 @@ boot16:
     mov     ax, 1                               ; load sector 1, the sector immediately after our current sector.
     mov     word[dataSector], ax                ; this should contain our second stage.
 
-    mov     cx, 32                               ; read 12 sectors, this includes our second and third stage.
+    mov     cx, BOOTLOADER_SIZE                 ; read 12 sectors, this includes our second and third stage.
 
     mov     bx, 00h                             ; set our buffer location to be 50h:0
     call    read_sectors
@@ -179,6 +179,9 @@ ErrorMsg        db "TZ.S1: ", 0
 
 ReadErrorMsg    db "Disk read error", 13, 10, 0
 SecondStageMsg  db "Read second stage", 13, 10, 0
+
+; size of our bootloader in sectors
+BOOTLOADER_SIZE equ 48
 
 times 510-($-$$) db 0
 dw 0AA55h

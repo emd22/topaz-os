@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "interrupt.h": "c",
+        "tzkern.h": "c",
+        "tzstring.h": "c",
+        "ttygraphics.h": "c"
+    }
+}

@@ -29,8 +29,18 @@ typedef struct {
 UInt32 TzKernInternAlloc(UInt32 size, Bool align, UInt32 *phys);
 UInt32 TzKernAlloc(UInt32 size);
 UInt32 TzKernAllocAlign(UInt32 size);
+void TzKernFree(void *ptr);
+
 void TzPagingInit();
 void TzPageSwitchDir(TzPageDirectory *new_dir);
 TzMemoryPage *TzPageGet(UInt32 addr, Int make, TzPageDirectory *dir);
+
+void TzFrameSet(UInt32 addr);
+void TzFrameClear(UInt32 addr);
+void TzAllocFrame(TzMemoryPage *page, Bool is_kpage, Bool writeable);
+void TzFreeFrame(TzMemoryPage *page);
+
+TzPageDirectory *TzPagingGetKernelDirectory();
+TzPageDirectory  *TzPagingGetCurrentDirectory();
 
 #endif

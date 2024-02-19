@@ -122,7 +122,7 @@ pmode_entry:
 
 .copy_boot32:
     mov     eax, 512
-    mov     ebx, 32
+    mov     ebx, BOOTLOADER_SIZE
     mul     ebx
 
     cld
@@ -138,4 +138,7 @@ pmode_entry:
     hlt
 
 StartMessage	db	13, 10, "* IN STAGE2 *", 13, 10, 0
+
+; size of our 3 stage bootloader in sectors
+BOOTLOADER_SIZE equ 48
 

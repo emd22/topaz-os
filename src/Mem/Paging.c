@@ -18,11 +18,24 @@
 static UInt32 frames_count;
 static UInt32 *frames;
 
+#include "TzHeap.h"
+
+extern TzMemoryHeap *kernel_heap;
+
 extern UInt32 end;
 UInt32 placement_address = (UInt32)&end;
 
 static TzPageDirectory *kernel_directory = NULL;
 static TzPageDirectory *current_directory = NULL;
+
+
+TzPageDirectory *TzPagingGetKernelDirectory() {
+    return kernel_directory;
+}
+
+TzPageDirectory  *TzPagingGetCurrentDirectory() {
+    return current_directory;
+}
 
 void TzFrameSet(UInt32 addr) {
     UInt32 frame = TZ_GET_FRAME_N(addr);
@@ -116,19 +129,28 @@ static void PageFaultHandler(TzRegisterList *registers) {
 }
 
 UInt32 TzKernInternAlloc(UInt32 size, Bool align, UInt32 *phys) {
-    if (align == 1 && (placement_address & 0xFFFFF000)) {
-        placement_address &= 0xFFFFF000;
-        placement_address += 0x1000;
+    if (kernel_heap == NULL) {
+        if (align == 1 && (placement_address & 0xFFFFF000)) {
+            placement_address &= 0xFFFFF000;
+            placement_address += 0x1000;
+        }
+
+        if (phys) {
+            *phys = placement_address;
+        }
+
+        UInt32 temp = placement_address;
+        placement_address += size;
+
+        return temp;
     }
 
+    void *addr = TzMemoryHeapAlloc(kernel_heap, size, align);
     if (phys) {
-        *phys = placement_address;
+        TzMemoryPage *page = TzPageGet((UInt32)addr, 0, kernel_directory);
+        *phys = page->frame * 0x1000 + (UInt32)addr & 0x0FFF;
     }
-
-    UInt32 temp = placement_address;
-    placement_address += size;
-
-    return temp;
+    return (UInt32)addr;
 }
 
 UInt32 TzKernAlloc(UInt32 size) {
@@ -137,6 +159,13 @@ UInt32 TzKernAlloc(UInt32 size) {
 
 UInt32 TzKernAllocAlign(UInt32 size) {
     return TzKernInternAlloc(size, 1, NULL);
+}
+
+void TzKernFree(void *ptr) {
+    if (!ptr) {
+        return;
+    }
+    TzMemoryHeapFree(kernel_heap, ptr);
 }
 
 void TzPagingInit() {
@@ -152,13 +181,24 @@ void TzPagingInit() {
     current_directory = kernel_directory;
 
     Int i = 0;
-    while (i < placement_address) {
+    for (i = TZ_KHEAP_START; i < TZ_KHEAP_START + TZ_KHEAP_INITIAL_SIZE; i += 0x1000) {
+        TzPageGet(i, 1, kernel_directory);
+    }
+
+    i = 0;
+    while (i < placement_address+0x1000) {
         TzAllocFrame(TzPageGet(i, 1, kernel_directory), 0, 0);
         i += 0x1000;
     }
 
+
+    for (i = TZ_KHEAP_START; i < TZ_KHEAP_START + TZ_KHEAP_INITIAL_SIZE; i += 0x1000)
+        TzAllocFrame(TzPageGet(i, 1, kernel_directory), false, false);
+
     TzRegisterIrq(14, PageFaultHandler);
     TzPageSwitchDir(kernel_directory);
+
+    kernel_heap = TzMemoryHeapCreate(TZ_KHEAP_START, TZ_KHEAP_START + TZ_KHEAP_INITIAL_SIZE, 0xCFFFF000, 0);
 }
 
 void TzPageSwitchDir(TzPageDirectory *new_dir) {

@@ -8,6 +8,12 @@ typedef enum {
 
 #define NULL (void *)0
 
+#define TRUE 1
+#define FALSE 0
+
+#define true TRUE
+#define false FALSE
+
 typedef unsigned long UInt32;
 typedef UInt32 UInt;
 typedef unsigned short UInt16;

@@ -52,9 +52,13 @@ void kmain(void) {
     TzPagingInit();
     TzPrintString("MEM32 [OK]\n");
 
-    
+    void *a = (void *)TzKernAlloc(20);
+    void *b = (void *)TzKernAlloc(20);
 
+    TzKernFree(a);
+    void *c = (void *)TzKernAlloc(20);
 
+    TzPrintFormat("a: 0x%x, b: 0x%x\nc: 0x%x\n", (UInt32)a, (UInt32)b, (UInt32)c);
 
     return;
 }

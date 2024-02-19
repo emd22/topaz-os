@@ -1,0 +1,24 @@
+# ninja log v5
+58	158	1693452154927959435	src/CMakeFiles/Boot32.dir/Mem/TzHeap.c.o	c179d5550254b93
+1	72	1693452154844625463	src/CMakeFiles/Boot32.dir/Driver/TtyGraphics.c.o	ebf4d0ae9edb69c5
+95	135	1693452154907959282	src/CMakeFiles/Boot32.dir/boot/Boot32.c.o	d782da5902262fc0
+0	68	1693452154837958745	src/CMakeFiles/Boot32.dir/boot/Bstrap32.S.o	bff8bde5bcdb98e
+2	95	1693452154867958975	src/CMakeFiles/Boot32.dir/Mem/Paging.c.o	8c1cb2791cbcccff
+1	134	1693452154904625922	src/CMakeFiles/Boot32.dir/Driver/Interrupt.c.o	4777b11e7c3df3ec
+73	123	1693452154894625846	src/CMakeFiles/Boot32.dir/TzString.c.o	101046b0e536ec93
+1	58	1693452154827958669	src/CMakeFiles/Boot32.dir/Driver/PitTimer.c.o	9c78ef889eae7cf3
+1	63	1693452154834625387	src/CMakeFiles/Boot32.dir/Mem/OrderedMap.c.o	cc6441f4c04cd1b9
+158	186	1693452154957959664	Boot32	a003b3a2d171e6b6
+64	111	1693452154884625769	src/CMakeFiles/Boot32.dir/TzDrvReg.c.o	60b6115c559539da
+68	111	1693452154881292410	src/CMakeFiles/Boot32.dir/TzKern.c.o	fc63b7d023e63679
+0	163	1694444346193960894	src/CMakeFiles/Boot32.dir/Driver/Ahci.c.o	f9012545856b1c36
+0	166	1694444346197294251	src/CMakeFiles/Boot32.dir/Driver/PitTimer.c.o	9c78ef889eae7cf3
+0	167	1694444346200627608	src/CMakeFiles/Boot32.dir/Driver/Pci.c.o	1268f5449d998e5a
+2	172	1694444346203960965	src/CMakeFiles/Boot32.dir/Mem/OrderedMap.c.o	cc6441f4c04cd1b9
+166	201	1694444346233961176	src/CMakeFiles/Boot32.dir/TzDrvReg.c.o	60b6115c559539da
+3	202	1694444346237294533	src/CMakeFiles/Boot32.dir/Mem/Paging.c.o	8c1cb2791cbcccff
+167	204	1694444346237294533	src/CMakeFiles/Boot32.dir/TzKern.c.o	fc63b7d023e63679
+172	211	1694444346243961246	src/CMakeFiles/Boot32.dir/boot/Boot32.c.o	d782da5902262fc0
+0	225	1694444346260628030	src/CMakeFiles/Boot32.dir/Driver/Interrupt.c.o	4777b11e7c3df3ec
+163	249	1694444346283961528	src/CMakeFiles/Boot32.dir/Mem/TzHeap.c.o	c179d5550254b93
+249	281	1694444346313961739	Boot32	7fc9e606c4716b4c

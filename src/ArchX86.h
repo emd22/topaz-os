@@ -33,4 +33,16 @@ inline UInt8 TzIn8(UInt16 port) {
 }
 
 
+inline void TzOut32(UInt16 port, UInt32 value) {
+    __asm__("outl %0, %1" : : "a"(value), "Nd"(port) : "memory");
+}
+
+inline UInt32 TzIn32(UInt16 port) {
+    UInt32 value;
+    __asm__("inl %1, %0" : "=a"(value) : "Nd"(port) : "memory");
+    return value;
+}
+
+
+
 #endif

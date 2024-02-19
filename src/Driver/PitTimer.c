@@ -1,7 +1,7 @@
 #include "PitTimer.h"
 #include "Interrupt.h"
 
-#include <TzDriverRegistry.h>
+#include <TzDrvReg.h>
 
 #include <Types.h>
 #include <ArchX86.h>

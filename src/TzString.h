@@ -6,5 +6,6 @@
 Int TzIntToStr(Int value, Char *buffer, Int radix);
 Int TzStringLength(Char *str);
 void *TzMemorySet(void *ptr, Int v, UInt32 n);
+void *TzMemoryCopy(void *dest, const void *src, UInt32 count);
 
 #endif

@@ -1,5 +1,5 @@
 .code32
-
+.att_syntax prefix
 
 # The interrupt service routines definitions
 .global _isr0
@@ -449,7 +449,7 @@ isr_common_stub:
     iret
 
 .globl _asm_IdtFlush
-.type _asm_IdtFlush, @function
+#.type _asm_IdtFlush, @function
 _asm_IdtFlush:
     mov 4(%esp), %eax
     lidt (%eax)

@@ -48,19 +48,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/bin/cmake
+CMAKE_COMMAND = /opt/homebrew/Cellar/cmake/3.27.5/bin/cmake
 
 # The command to remove a file.
-RM = /usr/bin/cmake -E rm -f
+RM = /opt/homebrew/Cellar/cmake/3.27.5/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/emd22/Projects/topaz-os
+CMAKE_SOURCE_DIR = /Users/emd22/Projects/topaz-os
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/emd22/Projects/topaz-os/build
+CMAKE_BINARY_DIR = /Users/emd22/Projects/topaz-os/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -68,7 +68,7 @@ CMAKE_BINARY_DIR = /home/emd22/Projects/topaz-os/build
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running CMake cache editor..."
-	/usr/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/opt/homebrew/Cellar/cmake/3.27.5/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -78,7 +78,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/opt/homebrew/Cellar/cmake/3.27.5/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -87,14 +87,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/emd22/Projects/topaz-os/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/emd22/Projects/topaz-os/build/CMakeFiles /home/emd22/Projects/topaz-os/build/src//CMakeFiles/progress.marks
-	cd /home/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emd22/Projects/topaz-os/build/CMakeFiles 0
+	cd /Users/emd22/Projects/topaz-os/build && $(CMAKE_COMMAND) -E cmake_progress_start /Users/emd22/Projects/topaz-os/build/CMakeFiles /Users/emd22/Projects/topaz-os/build/src//CMakeFiles/progress.marks
+	cd /Users/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/emd22/Projects/topaz-os/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/clean
+	cd /Users/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/clean
 .PHONY : clean
 
 # The main clean target
@@ -103,22 +103,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
+	cd /Users/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
+	cd /Users/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/emd22/Projects/topaz-os/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /Users/emd22/Projects/topaz-os/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/CMakeFiles/Boot32.dir/rule:
-	cd /home/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/Boot32.dir/rule
+	cd /Users/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/Boot32.dir/rule
 .PHONY : src/CMakeFiles/Boot32.dir/rule
 
 # Convenience name for target.
@@ -127,15 +127,39 @@ Boot32: src/CMakeFiles/Boot32.dir/rule
 
 # fast build rule for target.
 Boot32/fast:
-	cd /home/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/build
+	cd /Users/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/build
 .PHONY : Boot32/fast
+
+Driver/Ahci.o: Driver/Ahci.c.o
+.PHONY : Driver/Ahci.o
+
+# target to build an object file
+Driver/Ahci.c.o:
+	cd /Users/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/Driver/Ahci.c.o
+.PHONY : Driver/Ahci.c.o
+
+Driver/Ahci.i: Driver/Ahci.c.i
+.PHONY : Driver/Ahci.i
+
+# target to preprocess a source file
+Driver/Ahci.c.i:
+	cd /Users/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/Driver/Ahci.c.i
+.PHONY : Driver/Ahci.c.i
+
+Driver/Ahci.s: Driver/Ahci.c.s
+.PHONY : Driver/Ahci.s
+
+# target to generate assembly for a file
+Driver/Ahci.c.s:
+	cd /Users/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/Driver/Ahci.c.s
+.PHONY : Driver/Ahci.c.s
 
 Driver/Interrupt.o: Driver/Interrupt.c.o
 .PHONY : Driver/Interrupt.o
 
 # target to build an object file
 Driver/Interrupt.c.o:
-	cd /home/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/Driver/Interrupt.c.o
+	cd /Users/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/Driver/Interrupt.c.o
 .PHONY : Driver/Interrupt.c.o
 
 Driver/Interrupt.i: Driver/Interrupt.c.i
@@ -143,7 +167,7 @@ Driver/Interrupt.i: Driver/Interrupt.c.i
 
 # target to preprocess a source file
 Driver/Interrupt.c.i:
-	cd /home/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/Driver/Interrupt.c.i
+	cd /Users/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/Driver/Interrupt.c.i
 .PHONY : Driver/Interrupt.c.i
 
 Driver/Interrupt.s: Driver/Interrupt.c.s
@@ -151,15 +175,39 @@ Driver/Interrupt.s: Driver/Interrupt.c.s
 
 # target to generate assembly for a file
 Driver/Interrupt.c.s:
-	cd /home/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/Driver/Interrupt.c.s
+	cd /Users/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/Driver/Interrupt.c.s
 .PHONY : Driver/Interrupt.c.s
+
+Driver/Pci.o: Driver/Pci.c.o
+.PHONY : Driver/Pci.o
+
+# target to build an object file
+Driver/Pci.c.o:
+	cd /Users/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/Driver/Pci.c.o
+.PHONY : Driver/Pci.c.o
+
+Driver/Pci.i: Driver/Pci.c.i
+.PHONY : Driver/Pci.i
+
+# target to preprocess a source file
+Driver/Pci.c.i:
+	cd /Users/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/Driver/Pci.c.i
+.PHONY : Driver/Pci.c.i
+
+Driver/Pci.s: Driver/Pci.c.s
+.PHONY : Driver/Pci.s
+
+# target to generate assembly for a file
+Driver/Pci.c.s:
+	cd /Users/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/Driver/Pci.c.s
+.PHONY : Driver/Pci.c.s
 
 Driver/PitTimer.o: Driver/PitTimer.c.o
 .PHONY : Driver/PitTimer.o
 
 # target to build an object file
 Driver/PitTimer.c.o:
-	cd /home/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/Driver/PitTimer.c.o
+	cd /Users/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/Driver/PitTimer.c.o
 .PHONY : Driver/PitTimer.c.o
 
 Driver/PitTimer.i: Driver/PitTimer.c.i
@@ -167,7 +215,7 @@ Driver/PitTimer.i: Driver/PitTimer.c.i
 
 # target to preprocess a source file
 Driver/PitTimer.c.i:
-	cd /home/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/Driver/PitTimer.c.i
+	cd /Users/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/Driver/PitTimer.c.i
 .PHONY : Driver/PitTimer.c.i
 
 Driver/PitTimer.s: Driver/PitTimer.c.s
@@ -175,7 +223,7 @@ Driver/PitTimer.s: Driver/PitTimer.c.s
 
 # target to generate assembly for a file
 Driver/PitTimer.c.s:
-	cd /home/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/Driver/PitTimer.c.s
+	cd /Users/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/Driver/PitTimer.c.s
 .PHONY : Driver/PitTimer.c.s
 
 Driver/TtyGraphics.o: Driver/TtyGraphics.c.o
@@ -183,7 +231,7 @@ Driver/TtyGraphics.o: Driver/TtyGraphics.c.o
 
 # target to build an object file
 Driver/TtyGraphics.c.o:
-	cd /home/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/Driver/TtyGraphics.c.o
+	cd /Users/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/Driver/TtyGraphics.c.o
 .PHONY : Driver/TtyGraphics.c.o
 
 Driver/TtyGraphics.i: Driver/TtyGraphics.c.i
@@ -191,7 +239,7 @@ Driver/TtyGraphics.i: Driver/TtyGraphics.c.i
 
 # target to preprocess a source file
 Driver/TtyGraphics.c.i:
-	cd /home/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/Driver/TtyGraphics.c.i
+	cd /Users/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/Driver/TtyGraphics.c.i
 .PHONY : Driver/TtyGraphics.c.i
 
 Driver/TtyGraphics.s: Driver/TtyGraphics.c.s
@@ -199,15 +247,39 @@ Driver/TtyGraphics.s: Driver/TtyGraphics.c.s
 
 # target to generate assembly for a file
 Driver/TtyGraphics.c.s:
-	cd /home/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/Driver/TtyGraphics.c.s
+	cd /Users/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/Driver/TtyGraphics.c.s
 .PHONY : Driver/TtyGraphics.c.s
+
+Mem/OrderedMap.o: Mem/OrderedMap.c.o
+.PHONY : Mem/OrderedMap.o
+
+# target to build an object file
+Mem/OrderedMap.c.o:
+	cd /Users/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/Mem/OrderedMap.c.o
+.PHONY : Mem/OrderedMap.c.o
+
+Mem/OrderedMap.i: Mem/OrderedMap.c.i
+.PHONY : Mem/OrderedMap.i
+
+# target to preprocess a source file
+Mem/OrderedMap.c.i:
+	cd /Users/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/Mem/OrderedMap.c.i
+.PHONY : Mem/OrderedMap.c.i
+
+Mem/OrderedMap.s: Mem/OrderedMap.c.s
+.PHONY : Mem/OrderedMap.s
+
+# target to generate assembly for a file
+Mem/OrderedMap.c.s:
+	cd /Users/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/Mem/OrderedMap.c.s
+.PHONY : Mem/OrderedMap.c.s
 
 Mem/Paging.o: Mem/Paging.c.o
 .PHONY : Mem/Paging.o
 
 # target to build an object file
 Mem/Paging.c.o:
-	cd /home/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/Mem/Paging.c.o
+	cd /Users/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/Mem/Paging.c.o
 .PHONY : Mem/Paging.c.o
 
 Mem/Paging.i: Mem/Paging.c.i
@@ -215,7 +287,7 @@ Mem/Paging.i: Mem/Paging.c.i
 
 # target to preprocess a source file
 Mem/Paging.c.i:
-	cd /home/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/Mem/Paging.c.i
+	cd /Users/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/Mem/Paging.c.i
 .PHONY : Mem/Paging.c.i
 
 Mem/Paging.s: Mem/Paging.c.s
@@ -223,39 +295,63 @@ Mem/Paging.s: Mem/Paging.c.s
 
 # target to generate assembly for a file
 Mem/Paging.c.s:
-	cd /home/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/Mem/Paging.c.s
+	cd /Users/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/Mem/Paging.c.s
 .PHONY : Mem/Paging.c.s
 
-TzDriverRegistry.o: TzDriverRegistry.c.o
-.PHONY : TzDriverRegistry.o
+Mem/TzHeap.o: Mem/TzHeap.c.o
+.PHONY : Mem/TzHeap.o
 
 # target to build an object file
-TzDriverRegistry.c.o:
-	cd /home/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/TzDriverRegistry.c.o
-.PHONY : TzDriverRegistry.c.o
+Mem/TzHeap.c.o:
+	cd /Users/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/Mem/TzHeap.c.o
+.PHONY : Mem/TzHeap.c.o
 
-TzDriverRegistry.i: TzDriverRegistry.c.i
-.PHONY : TzDriverRegistry.i
+Mem/TzHeap.i: Mem/TzHeap.c.i
+.PHONY : Mem/TzHeap.i
 
 # target to preprocess a source file
-TzDriverRegistry.c.i:
-	cd /home/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/TzDriverRegistry.c.i
-.PHONY : TzDriverRegistry.c.i
+Mem/TzHeap.c.i:
+	cd /Users/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/Mem/TzHeap.c.i
+.PHONY : Mem/TzHeap.c.i
 
-TzDriverRegistry.s: TzDriverRegistry.c.s
-.PHONY : TzDriverRegistry.s
+Mem/TzHeap.s: Mem/TzHeap.c.s
+.PHONY : Mem/TzHeap.s
 
 # target to generate assembly for a file
-TzDriverRegistry.c.s:
-	cd /home/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/TzDriverRegistry.c.s
-.PHONY : TzDriverRegistry.c.s
+Mem/TzHeap.c.s:
+	cd /Users/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/Mem/TzHeap.c.s
+.PHONY : Mem/TzHeap.c.s
+
+TzDrvReg.o: TzDrvReg.c.o
+.PHONY : TzDrvReg.o
+
+# target to build an object file
+TzDrvReg.c.o:
+	cd /Users/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/TzDrvReg.c.o
+.PHONY : TzDrvReg.c.o
+
+TzDrvReg.i: TzDrvReg.c.i
+.PHONY : TzDrvReg.i
+
+# target to preprocess a source file
+TzDrvReg.c.i:
+	cd /Users/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/TzDrvReg.c.i
+.PHONY : TzDrvReg.c.i
+
+TzDrvReg.s: TzDrvReg.c.s
+.PHONY : TzDrvReg.s
+
+# target to generate assembly for a file
+TzDrvReg.c.s:
+	cd /Users/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/TzDrvReg.c.s
+.PHONY : TzDrvReg.c.s
 
 TzKern.o: TzKern.c.o
 .PHONY : TzKern.o
 
 # target to build an object file
 TzKern.c.o:
-	cd /home/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/TzKern.c.o
+	cd /Users/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/TzKern.c.o
 .PHONY : TzKern.c.o
 
 TzKern.i: TzKern.c.i
@@ -263,7 +359,7 @@ TzKern.i: TzKern.c.i
 
 # target to preprocess a source file
 TzKern.c.i:
-	cd /home/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/TzKern.c.i
+	cd /Users/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/TzKern.c.i
 .PHONY : TzKern.c.i
 
 TzKern.s: TzKern.c.s
@@ -271,7 +367,7 @@ TzKern.s: TzKern.c.s
 
 # target to generate assembly for a file
 TzKern.c.s:
-	cd /home/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/TzKern.c.s
+	cd /Users/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/TzKern.c.s
 .PHONY : TzKern.c.s
 
 TzString.o: TzString.c.o
@@ -279,7 +375,7 @@ TzString.o: TzString.c.o
 
 # target to build an object file
 TzString.c.o:
-	cd /home/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/TzString.c.o
+	cd /Users/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/TzString.c.o
 .PHONY : TzString.c.o
 
 TzString.i: TzString.c.i
@@ -287,7 +383,7 @@ TzString.i: TzString.c.i
 
 # target to preprocess a source file
 TzString.c.i:
-	cd /home/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/TzString.c.i
+	cd /Users/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/TzString.c.i
 .PHONY : TzString.c.i
 
 TzString.s: TzString.c.s
@@ -295,7 +391,7 @@ TzString.s: TzString.c.s
 
 # target to generate assembly for a file
 TzString.c.s:
-	cd /home/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/TzString.c.s
+	cd /Users/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/TzString.c.s
 .PHONY : TzString.c.s
 
 boot/Boot32.o: boot/Boot32.c.o
@@ -303,7 +399,7 @@ boot/Boot32.o: boot/Boot32.c.o
 
 # target to build an object file
 boot/Boot32.c.o:
-	cd /home/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/boot/Boot32.c.o
+	cd /Users/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/boot/Boot32.c.o
 .PHONY : boot/Boot32.c.o
 
 boot/Boot32.i: boot/Boot32.c.i
@@ -311,7 +407,7 @@ boot/Boot32.i: boot/Boot32.c.i
 
 # target to preprocess a source file
 boot/Boot32.c.i:
-	cd /home/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/boot/Boot32.c.i
+	cd /Users/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/boot/Boot32.c.i
 .PHONY : boot/Boot32.c.i
 
 boot/Boot32.s: boot/Boot32.c.s
@@ -319,7 +415,7 @@ boot/Boot32.s: boot/Boot32.c.s
 
 # target to generate assembly for a file
 boot/Boot32.c.s:
-	cd /home/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/boot/Boot32.c.s
+	cd /Users/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/boot/Boot32.c.s
 .PHONY : boot/Boot32.c.s
 
 boot/Bstrap32.o: boot/Bstrap32.S.o
@@ -327,7 +423,7 @@ boot/Bstrap32.o: boot/Bstrap32.S.o
 
 # target to build an object file
 boot/Bstrap32.S.o:
-	cd /home/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/boot/Bstrap32.S.o
+	cd /Users/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/boot/Bstrap32.S.o
 .PHONY : boot/Bstrap32.S.o
 
 # Help Target
@@ -339,21 +435,33 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Boot32"
+	@echo "... Driver/Ahci.o"
+	@echo "... Driver/Ahci.i"
+	@echo "... Driver/Ahci.s"
 	@echo "... Driver/Interrupt.o"
 	@echo "... Driver/Interrupt.i"
 	@echo "... Driver/Interrupt.s"
+	@echo "... Driver/Pci.o"
+	@echo "... Driver/Pci.i"
+	@echo "... Driver/Pci.s"
 	@echo "... Driver/PitTimer.o"
 	@echo "... Driver/PitTimer.i"
 	@echo "... Driver/PitTimer.s"
 	@echo "... Driver/TtyGraphics.o"
 	@echo "... Driver/TtyGraphics.i"
 	@echo "... Driver/TtyGraphics.s"
+	@echo "... Mem/OrderedMap.o"
+	@echo "... Mem/OrderedMap.i"
+	@echo "... Mem/OrderedMap.s"
 	@echo "... Mem/Paging.o"
 	@echo "... Mem/Paging.i"
 	@echo "... Mem/Paging.s"
-	@echo "... TzDriverRegistry.o"
-	@echo "... TzDriverRegistry.i"
-	@echo "... TzDriverRegistry.s"
+	@echo "... Mem/TzHeap.o"
+	@echo "... Mem/TzHeap.i"
+	@echo "... Mem/TzHeap.s"
+	@echo "... TzDrvReg.o"
+	@echo "... TzDrvReg.i"
+	@echo "... TzDrvReg.s"
 	@echo "... TzKern.o"
 	@echo "... TzKern.i"
 	@echo "... TzKern.s"
@@ -375,6 +483,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/emd22/Projects/topaz-os/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /Users/emd22/Projects/topaz-os/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

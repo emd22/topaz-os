@@ -2,6 +2,8 @@
 .globl _b32_entry
 .extern _start
 
+.att_syntax prefix
+
 # a small bootstrapper for our c third stage.
 
 _b32_entry:

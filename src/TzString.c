@@ -59,3 +59,16 @@ void *TzMemorySet(void *ptr, Int v, UInt32 n) {
 
     return ptr;
 }
+
+void *TzMemoryCopy(void *dest, const void *src, UInt32 count) {
+    char *pdest = (Char *)dest;
+    const char *psrc = (const char *)src;
+
+    if ((pdest != NULL) && (psrc != NULL)) {
+        while (count) {
+            *(pdest++) = *(psrc++);
+            --count;
+        }
+    }
+    return dest;
+}

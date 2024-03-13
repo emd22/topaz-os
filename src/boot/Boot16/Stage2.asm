@@ -137,7 +137,7 @@ pmode_entry:
     cli
     hlt
 
-StartMessage	db	13, 10, "* IN STAGE2 *", 13, 10, 0
+StartMessage	db	13, 10, "STAGE2: READING KERNEL FROM FAT16...", 13, 10, 0
 
 ; size of our 3 stage bootloader in sectors
 BOOTLOADER_SIZE equ 48

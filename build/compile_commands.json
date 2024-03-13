@@ -1,0 +1,86 @@
+[
+{
+  "directory": "/Users/emd22/Projects/topaz-os/build/src",
+  "command": "/opt/homebrew/bin/i686-elf-as  -I/Users/emd22/Projects/topaz-os/src -I/Users/emd22/Projects/topaz-os/src/CLib -nostdlib -nostartfiles -o CMakeFiles/Boot32.dir/boot/Bstrap32.S.o -c /Users/emd22/Projects/topaz-os/src/boot/Bstrap32.S",
+  "file": "/Users/emd22/Projects/topaz-os/src/boot/Bstrap32.S",
+  "output": "src/CMakeFiles/Boot32.dir/boot/Bstrap32.S.o"
+},
+{
+  "directory": "/Users/emd22/Projects/topaz-os/build/src",
+  "command": "/opt/homebrew/bin/i686-elf-gcc  -I/Users/emd22/Projects/topaz-os/src -I/Users/emd22/Projects/topaz-os/src/CLib -Os -m32 -fno-pie -ffreestanding -nostdlib -nostdinc -fno-stack-protector -nostartfiles  -o CMakeFiles/Boot32.dir/Driver/Ahci.c.o -c /Users/emd22/Projects/topaz-os/src/Driver/Ahci.c",
+  "file": "/Users/emd22/Projects/topaz-os/src/Driver/Ahci.c",
+  "output": "src/CMakeFiles/Boot32.dir/Driver/Ahci.c.o"
+},
+{
+  "directory": "/Users/emd22/Projects/topaz-os/build/src",
+  "command": "/opt/homebrew/bin/i686-elf-gcc  -I/Users/emd22/Projects/topaz-os/src -I/Users/emd22/Projects/topaz-os/src/CLib -Os -m32 -fno-pie -ffreestanding -nostdlib -nostdinc -fno-stack-protector -nostartfiles  -o CMakeFiles/Boot32.dir/Driver/Interrupt.c.o -c /Users/emd22/Projects/topaz-os/src/Driver/Interrupt.c",
+  "file": "/Users/emd22/Projects/topaz-os/src/Driver/Interrupt.c",
+  "output": "src/CMakeFiles/Boot32.dir/Driver/Interrupt.c.o"
+},
+{
+  "directory": "/Users/emd22/Projects/topaz-os/build/src",
+  "command": "/opt/homebrew/bin/i686-elf-gcc  -I/Users/emd22/Projects/topaz-os/src -I/Users/emd22/Projects/topaz-os/src/CLib -Os -m32 -fno-pie -ffreestanding -nostdlib -nostdinc -fno-stack-protector -nostartfiles  -o CMakeFiles/Boot32.dir/Driver/Pata.c.o -c /Users/emd22/Projects/topaz-os/src/Driver/Pata.c",
+  "file": "/Users/emd22/Projects/topaz-os/src/Driver/Pata.c",
+  "output": "src/CMakeFiles/Boot32.dir/Driver/Pata.c.o"
+},
+{
+  "directory": "/Users/emd22/Projects/topaz-os/build/src",
+  "command": "/opt/homebrew/bin/i686-elf-gcc  -I/Users/emd22/Projects/topaz-os/src -I/Users/emd22/Projects/topaz-os/src/CLib -Os -m32 -fno-pie -ffreestanding -nostdlib -nostdinc -fno-stack-protector -nostartfiles  -o CMakeFiles/Boot32.dir/Driver/Pci.c.o -c /Users/emd22/Projects/topaz-os/src/Driver/Pci.c",
+  "file": "/Users/emd22/Projects/topaz-os/src/Driver/Pci.c",
+  "output": "src/CMakeFiles/Boot32.dir/Driver/Pci.c.o"
+},
+{
+  "directory": "/Users/emd22/Projects/topaz-os/build/src",
+  "command": "/opt/homebrew/bin/i686-elf-gcc  -I/Users/emd22/Projects/topaz-os/src -I/Users/emd22/Projects/topaz-os/src/CLib -Os -m32 -fno-pie -ffreestanding -nostdlib -nostdinc -fno-stack-protector -nostartfiles  -o CMakeFiles/Boot32.dir/Driver/PitTimer.c.o -c /Users/emd22/Projects/topaz-os/src/Driver/PitTimer.c",
+  "file": "/Users/emd22/Projects/topaz-os/src/Driver/PitTimer.c",
+  "output": "src/CMakeFiles/Boot32.dir/Driver/PitTimer.c.o"
+},
+{
+  "directory": "/Users/emd22/Projects/topaz-os/build/src",
+  "command": "/opt/homebrew/bin/i686-elf-gcc  -I/Users/emd22/Projects/topaz-os/src -I/Users/emd22/Projects/topaz-os/src/CLib -Os -m32 -fno-pie -ffreestanding -nostdlib -nostdinc -fno-stack-protector -nostartfiles  -o CMakeFiles/Boot32.dir/Driver/TtyGraphics.c.o -c /Users/emd22/Projects/topaz-os/src/Driver/TtyGraphics.c",
+  "file": "/Users/emd22/Projects/topaz-os/src/Driver/TtyGraphics.c",
+  "output": "src/CMakeFiles/Boot32.dir/Driver/TtyGraphics.c.o"
+},
+{
+  "directory": "/Users/emd22/Projects/topaz-os/build/src",
+  "command": "/opt/homebrew/bin/i686-elf-gcc  -I/Users/emd22/Projects/topaz-os/src -I/Users/emd22/Projects/topaz-os/src/CLib -Os -m32 -fno-pie -ffreestanding -nostdlib -nostdinc -fno-stack-protector -nostartfiles  -o CMakeFiles/Boot32.dir/Mem/OrderedMap.c.o -c /Users/emd22/Projects/topaz-os/src/Mem/OrderedMap.c",
+  "file": "/Users/emd22/Projects/topaz-os/src/Mem/OrderedMap.c",
+  "output": "src/CMakeFiles/Boot32.dir/Mem/OrderedMap.c.o"
+},
+{
+  "directory": "/Users/emd22/Projects/topaz-os/build/src",
+  "command": "/opt/homebrew/bin/i686-elf-gcc  -I/Users/emd22/Projects/topaz-os/src -I/Users/emd22/Projects/topaz-os/src/CLib -Os -m32 -fno-pie -ffreestanding -nostdlib -nostdinc -fno-stack-protector -nostartfiles  -o CMakeFiles/Boot32.dir/Mem/Paging.c.o -c /Users/emd22/Projects/topaz-os/src/Mem/Paging.c",
+  "file": "/Users/emd22/Projects/topaz-os/src/Mem/Paging.c",
+  "output": "src/CMakeFiles/Boot32.dir/Mem/Paging.c.o"
+},
+{
+  "directory": "/Users/emd22/Projects/topaz-os/build/src",
+  "command": "/opt/homebrew/bin/i686-elf-gcc  -I/Users/emd22/Projects/topaz-os/src -I/Users/emd22/Projects/topaz-os/src/CLib -Os -m32 -fno-pie -ffreestanding -nostdlib -nostdinc -fno-stack-protector -nostartfiles  -o CMakeFiles/Boot32.dir/Mem/TzHeap.c.o -c /Users/emd22/Projects/topaz-os/src/Mem/TzHeap.c",
+  "file": "/Users/emd22/Projects/topaz-os/src/Mem/TzHeap.c",
+  "output": "src/CMakeFiles/Boot32.dir/Mem/TzHeap.c.o"
+},
+{
+  "directory": "/Users/emd22/Projects/topaz-os/build/src",
+  "command": "/opt/homebrew/bin/i686-elf-gcc  -I/Users/emd22/Projects/topaz-os/src -I/Users/emd22/Projects/topaz-os/src/CLib -Os -m32 -fno-pie -ffreestanding -nostdlib -nostdinc -fno-stack-protector -nostartfiles  -o CMakeFiles/Boot32.dir/TzDrvReg.c.o -c /Users/emd22/Projects/topaz-os/src/TzDrvReg.c",
+  "file": "/Users/emd22/Projects/topaz-os/src/TzDrvReg.c",
+  "output": "src/CMakeFiles/Boot32.dir/TzDrvReg.c.o"
+},
+{
+  "directory": "/Users/emd22/Projects/topaz-os/build/src",
+  "command": "/opt/homebrew/bin/i686-elf-gcc  -I/Users/emd22/Projects/topaz-os/src -I/Users/emd22/Projects/topaz-os/src/CLib -Os -m32 -fno-pie -ffreestanding -nostdlib -nostdinc -fno-stack-protector -nostartfiles  -o CMakeFiles/Boot32.dir/TzKern.c.o -c /Users/emd22/Projects/topaz-os/src/TzKern.c",
+  "file": "/Users/emd22/Projects/topaz-os/src/TzKern.c",
+  "output": "src/CMakeFiles/Boot32.dir/TzKern.c.o"
+},
+{
+  "directory": "/Users/emd22/Projects/topaz-os/build/src",
+  "command": "/opt/homebrew/bin/i686-elf-gcc  -I/Users/emd22/Projects/topaz-os/src -I/Users/emd22/Projects/topaz-os/src/CLib -Os -m32 -fno-pie -ffreestanding -nostdlib -nostdinc -fno-stack-protector -nostartfiles  -o CMakeFiles/Boot32.dir/TzString.c.o -c /Users/emd22/Projects/topaz-os/src/TzString.c",
+  "file": "/Users/emd22/Projects/topaz-os/src/TzString.c",
+  "output": "src/CMakeFiles/Boot32.dir/TzString.c.o"
+},
+{
+  "directory": "/Users/emd22/Projects/topaz-os/build/src",
+  "command": "/opt/homebrew/bin/i686-elf-gcc  -I/Users/emd22/Projects/topaz-os/src -I/Users/emd22/Projects/topaz-os/src/CLib -Os -m32 -fno-pie -ffreestanding -nostdlib -nostdinc -fno-stack-protector -nostartfiles  -o CMakeFiles/Boot32.dir/boot/Boot32.c.o -c /Users/emd22/Projects/topaz-os/src/boot/Boot32.c",
+  "file": "/Users/emd22/Projects/topaz-os/src/boot/Boot32.c",
+  "output": "src/CMakeFiles/Boot32.dir/boot/Boot32.c.o"
+}
+]

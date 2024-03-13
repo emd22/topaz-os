@@ -20,6 +20,8 @@ src/CMakeFiles/Boot32.dir/Driver/Interrupt.c.o: /Users/emd22/Projects/topaz-os/s
   /Users/emd22/Projects/topaz-os/src/TzString.h \
   /Users/emd22/Projects/topaz-os/src/boot/IntAsm.h
 
+src/CMakeFiles/Boot32.dir/Driver/Pata.c.o: /Users/emd22/Projects/topaz-os/src/Driver/Pata.c
+
 src/CMakeFiles/Boot32.dir/Driver/Pci.c.o: /Users/emd22/Projects/topaz-os/src/Driver/Pci.c \
   /Users/emd22/Projects/topaz-os/src/ArchX86.h \
   /Users/emd22/Projects/topaz-os/src/Driver/Pci.h \
@@ -112,8 +114,6 @@ src/CMakeFiles/Boot32.dir/boot/Boot32.c.o: /Users/emd22/Projects/topaz-os/src/bo
 
 /Users/emd22/Projects/topaz-os/src/TzKern.c:
 
-/Users/emd22/Projects/topaz-os/src/Mem/Paging.c:
-
 /Users/emd22/Projects/topaz-os/src/Mem/OrderedMap.c:
 
 /Users/emd22/Projects/topaz-os/src/Driver/TtyGraphics.c:
@@ -128,9 +128,13 @@ src/CMakeFiles/Boot32.dir/boot/Boot32.c.o: /Users/emd22/Projects/topaz-os/src/bo
 
 /Users/emd22/Projects/topaz-os/src/Driver/Pci.c:
 
-/Users/emd22/Projects/topaz-os/src/Types.h:
+/Users/emd22/Projects/topaz-os/src/Mem/Paging.c:
+
+/Users/emd22/Projects/topaz-os/src/Driver/Pata.c:
 
 /Users/emd22/Projects/topaz-os/src/Mem/TzHeap.c:
+
+/Users/emd22/Projects/topaz-os/src/Types.h:
 
 /Users/emd22/Projects/topaz-os/src/Mem/TzHeap.h:
 

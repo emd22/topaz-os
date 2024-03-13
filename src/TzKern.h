@@ -8,6 +8,10 @@
 
 #include <stdarg.h>
 
+#ifndef __FILE_NAME__
+#define __FILE_NAME__ __FILE__
+#endif
+
 #define TzPanic(str, ...) \
     { __TzPanic(__FILE_NAME__, __LINE__, str, __VA_ARGS__); }
 

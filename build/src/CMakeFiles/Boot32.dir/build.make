@@ -110,10 +110,24 @@ src/CMakeFiles/Boot32.dir/Driver/Interrupt.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/Boot32.dir/Driver/Interrupt.c.s"
 	cd /Users/emd22/Projects/topaz-os/build/src && /opt/homebrew/bin/i686-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/emd22/Projects/topaz-os/src/Driver/Interrupt.c -o CMakeFiles/Boot32.dir/Driver/Interrupt.c.s
 
+src/CMakeFiles/Boot32.dir/Driver/Pata.c.o: src/CMakeFiles/Boot32.dir/flags.make
+src/CMakeFiles/Boot32.dir/Driver/Pata.c.o: /Users/emd22/Projects/topaz-os/src/Driver/Pata.c
+src/CMakeFiles/Boot32.dir/Driver/Pata.c.o: src/CMakeFiles/Boot32.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/emd22/Projects/topaz-os/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object src/CMakeFiles/Boot32.dir/Driver/Pata.c.o"
+	cd /Users/emd22/Projects/topaz-os/build/src && /opt/homebrew/bin/i686-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/CMakeFiles/Boot32.dir/Driver/Pata.c.o -MF CMakeFiles/Boot32.dir/Driver/Pata.c.o.d -o CMakeFiles/Boot32.dir/Driver/Pata.c.o -c /Users/emd22/Projects/topaz-os/src/Driver/Pata.c
+
+src/CMakeFiles/Boot32.dir/Driver/Pata.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/Boot32.dir/Driver/Pata.c.i"
+	cd /Users/emd22/Projects/topaz-os/build/src && /opt/homebrew/bin/i686-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/emd22/Projects/topaz-os/src/Driver/Pata.c > CMakeFiles/Boot32.dir/Driver/Pata.c.i
+
+src/CMakeFiles/Boot32.dir/Driver/Pata.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/Boot32.dir/Driver/Pata.c.s"
+	cd /Users/emd22/Projects/topaz-os/build/src && /opt/homebrew/bin/i686-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/emd22/Projects/topaz-os/src/Driver/Pata.c -o CMakeFiles/Boot32.dir/Driver/Pata.c.s
+
 src/CMakeFiles/Boot32.dir/Driver/Pci.c.o: src/CMakeFiles/Boot32.dir/flags.make
 src/CMakeFiles/Boot32.dir/Driver/Pci.c.o: /Users/emd22/Projects/topaz-os/src/Driver/Pci.c
 src/CMakeFiles/Boot32.dir/Driver/Pci.c.o: src/CMakeFiles/Boot32.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/emd22/Projects/topaz-os/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object src/CMakeFiles/Boot32.dir/Driver/Pci.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/emd22/Projects/topaz-os/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object src/CMakeFiles/Boot32.dir/Driver/Pci.c.o"
 	cd /Users/emd22/Projects/topaz-os/build/src && /opt/homebrew/bin/i686-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/CMakeFiles/Boot32.dir/Driver/Pci.c.o -MF CMakeFiles/Boot32.dir/Driver/Pci.c.o.d -o CMakeFiles/Boot32.dir/Driver/Pci.c.o -c /Users/emd22/Projects/topaz-os/src/Driver/Pci.c
 
 src/CMakeFiles/Boot32.dir/Driver/Pci.c.i: cmake_force
@@ -127,7 +141,7 @@ src/CMakeFiles/Boot32.dir/Driver/Pci.c.s: cmake_force
 src/CMakeFiles/Boot32.dir/Driver/PitTimer.c.o: src/CMakeFiles/Boot32.dir/flags.make
 src/CMakeFiles/Boot32.dir/Driver/PitTimer.c.o: /Users/emd22/Projects/topaz-os/src/Driver/PitTimer.c
 src/CMakeFiles/Boot32.dir/Driver/PitTimer.c.o: src/CMakeFiles/Boot32.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/emd22/Projects/topaz-os/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object src/CMakeFiles/Boot32.dir/Driver/PitTimer.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/emd22/Projects/topaz-os/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object src/CMakeFiles/Boot32.dir/Driver/PitTimer.c.o"
 	cd /Users/emd22/Projects/topaz-os/build/src && /opt/homebrew/bin/i686-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/CMakeFiles/Boot32.dir/Driver/PitTimer.c.o -MF CMakeFiles/Boot32.dir/Driver/PitTimer.c.o.d -o CMakeFiles/Boot32.dir/Driver/PitTimer.c.o -c /Users/emd22/Projects/topaz-os/src/Driver/PitTimer.c
 
 src/CMakeFiles/Boot32.dir/Driver/PitTimer.c.i: cmake_force
@@ -141,7 +155,7 @@ src/CMakeFiles/Boot32.dir/Driver/PitTimer.c.s: cmake_force
 src/CMakeFiles/Boot32.dir/Driver/TtyGraphics.c.o: src/CMakeFiles/Boot32.dir/flags.make
 src/CMakeFiles/Boot32.dir/Driver/TtyGraphics.c.o: /Users/emd22/Projects/topaz-os/src/Driver/TtyGraphics.c
 src/CMakeFiles/Boot32.dir/Driver/TtyGraphics.c.o: src/CMakeFiles/Boot32.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/emd22/Projects/topaz-os/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object src/CMakeFiles/Boot32.dir/Driver/TtyGraphics.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/emd22/Projects/topaz-os/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object src/CMakeFiles/Boot32.dir/Driver/TtyGraphics.c.o"
 	cd /Users/emd22/Projects/topaz-os/build/src && /opt/homebrew/bin/i686-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/CMakeFiles/Boot32.dir/Driver/TtyGraphics.c.o -MF CMakeFiles/Boot32.dir/Driver/TtyGraphics.c.o.d -o CMakeFiles/Boot32.dir/Driver/TtyGraphics.c.o -c /Users/emd22/Projects/topaz-os/src/Driver/TtyGraphics.c
 
 src/CMakeFiles/Boot32.dir/Driver/TtyGraphics.c.i: cmake_force
@@ -155,7 +169,7 @@ src/CMakeFiles/Boot32.dir/Driver/TtyGraphics.c.s: cmake_force
 src/CMakeFiles/Boot32.dir/Mem/OrderedMap.c.o: src/CMakeFiles/Boot32.dir/flags.make
 src/CMakeFiles/Boot32.dir/Mem/OrderedMap.c.o: /Users/emd22/Projects/topaz-os/src/Mem/OrderedMap.c
 src/CMakeFiles/Boot32.dir/Mem/OrderedMap.c.o: src/CMakeFiles/Boot32.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/emd22/Projects/topaz-os/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object src/CMakeFiles/Boot32.dir/Mem/OrderedMap.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/emd22/Projects/topaz-os/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object src/CMakeFiles/Boot32.dir/Mem/OrderedMap.c.o"
 	cd /Users/emd22/Projects/topaz-os/build/src && /opt/homebrew/bin/i686-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/CMakeFiles/Boot32.dir/Mem/OrderedMap.c.o -MF CMakeFiles/Boot32.dir/Mem/OrderedMap.c.o.d -o CMakeFiles/Boot32.dir/Mem/OrderedMap.c.o -c /Users/emd22/Projects/topaz-os/src/Mem/OrderedMap.c
 
 src/CMakeFiles/Boot32.dir/Mem/OrderedMap.c.i: cmake_force
@@ -169,7 +183,7 @@ src/CMakeFiles/Boot32.dir/Mem/OrderedMap.c.s: cmake_force
 src/CMakeFiles/Boot32.dir/Mem/Paging.c.o: src/CMakeFiles/Boot32.dir/flags.make
 src/CMakeFiles/Boot32.dir/Mem/Paging.c.o: /Users/emd22/Projects/topaz-os/src/Mem/Paging.c
 src/CMakeFiles/Boot32.dir/Mem/Paging.c.o: src/CMakeFiles/Boot32.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/emd22/Projects/topaz-os/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object src/CMakeFiles/Boot32.dir/Mem/Paging.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/emd22/Projects/topaz-os/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object src/CMakeFiles/Boot32.dir/Mem/Paging.c.o"
 	cd /Users/emd22/Projects/topaz-os/build/src && /opt/homebrew/bin/i686-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/CMakeFiles/Boot32.dir/Mem/Paging.c.o -MF CMakeFiles/Boot32.dir/Mem/Paging.c.o.d -o CMakeFiles/Boot32.dir/Mem/Paging.c.o -c /Users/emd22/Projects/topaz-os/src/Mem/Paging.c
 
 src/CMakeFiles/Boot32.dir/Mem/Paging.c.i: cmake_force
@@ -183,7 +197,7 @@ src/CMakeFiles/Boot32.dir/Mem/Paging.c.s: cmake_force
 src/CMakeFiles/Boot32.dir/Mem/TzHeap.c.o: src/CMakeFiles/Boot32.dir/flags.make
 src/CMakeFiles/Boot32.dir/Mem/TzHeap.c.o: /Users/emd22/Projects/topaz-os/src/Mem/TzHeap.c
 src/CMakeFiles/Boot32.dir/Mem/TzHeap.c.o: src/CMakeFiles/Boot32.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/emd22/Projects/topaz-os/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object src/CMakeFiles/Boot32.dir/Mem/TzHeap.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/emd22/Projects/topaz-os/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object src/CMakeFiles/Boot32.dir/Mem/TzHeap.c.o"
 	cd /Users/emd22/Projects/topaz-os/build/src && /opt/homebrew/bin/i686-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/CMakeFiles/Boot32.dir/Mem/TzHeap.c.o -MF CMakeFiles/Boot32.dir/Mem/TzHeap.c.o.d -o CMakeFiles/Boot32.dir/Mem/TzHeap.c.o -c /Users/emd22/Projects/topaz-os/src/Mem/TzHeap.c
 
 src/CMakeFiles/Boot32.dir/Mem/TzHeap.c.i: cmake_force
@@ -197,7 +211,7 @@ src/CMakeFiles/Boot32.dir/Mem/TzHeap.c.s: cmake_force
 src/CMakeFiles/Boot32.dir/TzDrvReg.c.o: src/CMakeFiles/Boot32.dir/flags.make
 src/CMakeFiles/Boot32.dir/TzDrvReg.c.o: /Users/emd22/Projects/topaz-os/src/TzDrvReg.c
 src/CMakeFiles/Boot32.dir/TzDrvReg.c.o: src/CMakeFiles/Boot32.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/emd22/Projects/topaz-os/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object src/CMakeFiles/Boot32.dir/TzDrvReg.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/emd22/Projects/topaz-os/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object src/CMakeFiles/Boot32.dir/TzDrvReg.c.o"
 	cd /Users/emd22/Projects/topaz-os/build/src && /opt/homebrew/bin/i686-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/CMakeFiles/Boot32.dir/TzDrvReg.c.o -MF CMakeFiles/Boot32.dir/TzDrvReg.c.o.d -o CMakeFiles/Boot32.dir/TzDrvReg.c.o -c /Users/emd22/Projects/topaz-os/src/TzDrvReg.c
 
 src/CMakeFiles/Boot32.dir/TzDrvReg.c.i: cmake_force
@@ -211,7 +225,7 @@ src/CMakeFiles/Boot32.dir/TzDrvReg.c.s: cmake_force
 src/CMakeFiles/Boot32.dir/TzKern.c.o: src/CMakeFiles/Boot32.dir/flags.make
 src/CMakeFiles/Boot32.dir/TzKern.c.o: /Users/emd22/Projects/topaz-os/src/TzKern.c
 src/CMakeFiles/Boot32.dir/TzKern.c.o: src/CMakeFiles/Boot32.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/emd22/Projects/topaz-os/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object src/CMakeFiles/Boot32.dir/TzKern.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/emd22/Projects/topaz-os/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object src/CMakeFiles/Boot32.dir/TzKern.c.o"
 	cd /Users/emd22/Projects/topaz-os/build/src && /opt/homebrew/bin/i686-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/CMakeFiles/Boot32.dir/TzKern.c.o -MF CMakeFiles/Boot32.dir/TzKern.c.o.d -o CMakeFiles/Boot32.dir/TzKern.c.o -c /Users/emd22/Projects/topaz-os/src/TzKern.c
 
 src/CMakeFiles/Boot32.dir/TzKern.c.i: cmake_force
@@ -225,7 +239,7 @@ src/CMakeFiles/Boot32.dir/TzKern.c.s: cmake_force
 src/CMakeFiles/Boot32.dir/TzString.c.o: src/CMakeFiles/Boot32.dir/flags.make
 src/CMakeFiles/Boot32.dir/TzString.c.o: /Users/emd22/Projects/topaz-os/src/TzString.c
 src/CMakeFiles/Boot32.dir/TzString.c.o: src/CMakeFiles/Boot32.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/emd22/Projects/topaz-os/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object src/CMakeFiles/Boot32.dir/TzString.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/emd22/Projects/topaz-os/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object src/CMakeFiles/Boot32.dir/TzString.c.o"
 	cd /Users/emd22/Projects/topaz-os/build/src && /opt/homebrew/bin/i686-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/CMakeFiles/Boot32.dir/TzString.c.o -MF CMakeFiles/Boot32.dir/TzString.c.o.d -o CMakeFiles/Boot32.dir/TzString.c.o -c /Users/emd22/Projects/topaz-os/src/TzString.c
 
 src/CMakeFiles/Boot32.dir/TzString.c.i: cmake_force
@@ -239,7 +253,7 @@ src/CMakeFiles/Boot32.dir/TzString.c.s: cmake_force
 src/CMakeFiles/Boot32.dir/boot/Boot32.c.o: src/CMakeFiles/Boot32.dir/flags.make
 src/CMakeFiles/Boot32.dir/boot/Boot32.c.o: /Users/emd22/Projects/topaz-os/src/boot/Boot32.c
 src/CMakeFiles/Boot32.dir/boot/Boot32.c.o: src/CMakeFiles/Boot32.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/emd22/Projects/topaz-os/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object src/CMakeFiles/Boot32.dir/boot/Boot32.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/emd22/Projects/topaz-os/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object src/CMakeFiles/Boot32.dir/boot/Boot32.c.o"
 	cd /Users/emd22/Projects/topaz-os/build/src && /opt/homebrew/bin/i686-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT src/CMakeFiles/Boot32.dir/boot/Boot32.c.o -MF CMakeFiles/Boot32.dir/boot/Boot32.c.o.d -o CMakeFiles/Boot32.dir/boot/Boot32.c.o -c /Users/emd22/Projects/topaz-os/src/boot/Boot32.c
 
 src/CMakeFiles/Boot32.dir/boot/Boot32.c.i: cmake_force
@@ -255,6 +269,7 @@ Boot32_OBJECTS = \
 "CMakeFiles/Boot32.dir/boot/Bstrap32.S.o" \
 "CMakeFiles/Boot32.dir/Driver/Ahci.c.o" \
 "CMakeFiles/Boot32.dir/Driver/Interrupt.c.o" \
+"CMakeFiles/Boot32.dir/Driver/Pata.c.o" \
 "CMakeFiles/Boot32.dir/Driver/Pci.c.o" \
 "CMakeFiles/Boot32.dir/Driver/PitTimer.c.o" \
 "CMakeFiles/Boot32.dir/Driver/TtyGraphics.c.o" \
@@ -272,6 +287,7 @@ Boot32_EXTERNAL_OBJECTS =
 Boot32: src/CMakeFiles/Boot32.dir/boot/Bstrap32.S.o
 Boot32: src/CMakeFiles/Boot32.dir/Driver/Ahci.c.o
 Boot32: src/CMakeFiles/Boot32.dir/Driver/Interrupt.c.o
+Boot32: src/CMakeFiles/Boot32.dir/Driver/Pata.c.o
 Boot32: src/CMakeFiles/Boot32.dir/Driver/Pci.c.o
 Boot32: src/CMakeFiles/Boot32.dir/Driver/PitTimer.c.o
 Boot32: src/CMakeFiles/Boot32.dir/Driver/TtyGraphics.c.o
@@ -284,7 +300,7 @@ Boot32: src/CMakeFiles/Boot32.dir/TzString.c.o
 Boot32: src/CMakeFiles/Boot32.dir/boot/Boot32.c.o
 Boot32: src/CMakeFiles/Boot32.dir/build.make
 Boot32: src/CMakeFiles/Boot32.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/emd22/Projects/topaz-os/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking C executable ../Boot32"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/emd22/Projects/topaz-os/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Linking C executable ../Boot32"
 	cd /Users/emd22/Projects/topaz-os/build/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Boot32.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

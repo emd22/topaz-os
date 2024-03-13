@@ -7,7 +7,7 @@ ASM_DEFINES =
 
 ASM_INCLUDES = -I/Users/emd22/Projects/topaz-os/src -I/Users/emd22/Projects/topaz-os/src/CLib
 
-ASM_FLAGS = 
+ASM_FLAGS = -nostdlib -nostartfiles
 
 C_DEFINES = 
 

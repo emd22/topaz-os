@@ -178,6 +178,30 @@ Driver/Interrupt.c.s:
 	cd /Users/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/Driver/Interrupt.c.s
 .PHONY : Driver/Interrupt.c.s
 
+Driver/Pata.o: Driver/Pata.c.o
+.PHONY : Driver/Pata.o
+
+# target to build an object file
+Driver/Pata.c.o:
+	cd /Users/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/Driver/Pata.c.o
+.PHONY : Driver/Pata.c.o
+
+Driver/Pata.i: Driver/Pata.c.i
+.PHONY : Driver/Pata.i
+
+# target to preprocess a source file
+Driver/Pata.c.i:
+	cd /Users/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/Driver/Pata.c.i
+.PHONY : Driver/Pata.c.i
+
+Driver/Pata.s: Driver/Pata.c.s
+.PHONY : Driver/Pata.s
+
+# target to generate assembly for a file
+Driver/Pata.c.s:
+	cd /Users/emd22/Projects/topaz-os/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/Boot32.dir/build.make src/CMakeFiles/Boot32.dir/Driver/Pata.c.s
+.PHONY : Driver/Pata.c.s
+
 Driver/Pci.o: Driver/Pci.c.o
 .PHONY : Driver/Pci.o
 
@@ -441,6 +465,9 @@ help:
 	@echo "... Driver/Interrupt.o"
 	@echo "... Driver/Interrupt.i"
 	@echo "... Driver/Interrupt.s"
+	@echo "... Driver/Pata.o"
+	@echo "... Driver/Pata.i"
+	@echo "... Driver/Pata.s"
 	@echo "... Driver/Pci.o"
 	@echo "... Driver/Pci.i"
 	@echo "... Driver/Pci.s"

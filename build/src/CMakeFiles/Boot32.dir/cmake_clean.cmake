@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Boot32.dir/Driver/Ahci.c.o.d"
   "CMakeFiles/Boot32.dir/Driver/Interrupt.c.o"
   "CMakeFiles/Boot32.dir/Driver/Interrupt.c.o.d"
+  "CMakeFiles/Boot32.dir/Driver/Pata.c.o"
+  "CMakeFiles/Boot32.dir/Driver/Pata.c.o.d"
   "CMakeFiles/Boot32.dir/Driver/Pci.c.o"
   "CMakeFiles/Boot32.dir/Driver/Pci.c.o.d"
   "CMakeFiles/Boot32.dir/Driver/PitTimer.c.o"

@@ -22,6 +22,9 @@ src/CMakeFiles/Boot32.dir/Driver/Interrupt.c.o
  /Users/emd22/Projects/topaz-os/src/TzString.h
  /Users/emd22/Projects/topaz-os/src/boot/IntAsm.h
 
+src/CMakeFiles/Boot32.dir/Driver/Pata.c.o
+ /Users/emd22/Projects/topaz-os/src/Driver/Pata.c
+
 src/CMakeFiles/Boot32.dir/Driver/Pci.c.o
  /Users/emd22/Projects/topaz-os/src/Driver/Pci.c
  /Users/emd22/Projects/topaz-os/src/ArchX86.h

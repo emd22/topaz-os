@@ -22,6 +22,7 @@ set(CMAKE_ASM_TARGET_INCLUDE_PATH
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/emd22/Projects/topaz-os/src/Driver/Ahci.c" "src/CMakeFiles/Boot32.dir/Driver/Ahci.c.o" "gcc" "src/CMakeFiles/Boot32.dir/Driver/Ahci.c.o.d"
   "/Users/emd22/Projects/topaz-os/src/Driver/Interrupt.c" "src/CMakeFiles/Boot32.dir/Driver/Interrupt.c.o" "gcc" "src/CMakeFiles/Boot32.dir/Driver/Interrupt.c.o.d"
+  "/Users/emd22/Projects/topaz-os/src/Driver/Pata.c" "src/CMakeFiles/Boot32.dir/Driver/Pata.c.o" "gcc" "src/CMakeFiles/Boot32.dir/Driver/Pata.c.o.d"
   "/Users/emd22/Projects/topaz-os/src/Driver/Pci.c" "src/CMakeFiles/Boot32.dir/Driver/Pci.c.o" "gcc" "src/CMakeFiles/Boot32.dir/Driver/Pci.c.o.d"
   "/Users/emd22/Projects/topaz-os/src/Driver/PitTimer.c" "src/CMakeFiles/Boot32.dir/Driver/PitTimer.c.o" "gcc" "src/CMakeFiles/Boot32.dir/Driver/PitTimer.c.o.d"
   "/Users/emd22/Projects/topaz-os/src/Driver/TtyGraphics.c" "src/CMakeFiles/Boot32.dir/Driver/TtyGraphics.c.o" "gcc" "src/CMakeFiles/Boot32.dir/Driver/TtyGraphics.c.o.d"

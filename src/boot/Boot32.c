@@ -39,18 +39,18 @@ void TimerCallback(TzRegisterList registers) {
 void kmain(void) {
     TzBackgroundColorSet(TZ_COLOR_CYAN);
     TzForegroundColorSet(TZ_COLOR_YELLOW);
-    TzDisplayClear();
+    // TzDisplayClear();
     TzSetPosition(0, 0);
     TzPrintString("Welcome to TOPAZ OS!\n");
     TzForegroundColorSet(TZ_COLOR_WHITE);
-    TzPrintString("Init: ");
+    TzPrintString("Init:\n");
 
     TzGdtInit();
-    TzPrintString("GDT [OK] ");
+    TzPrintString("  GDT [OK]\n");
     TzIdtInit();
-    TzPrintString("IDT [OK] ");
+    TzPrintString("  IDT [OK]\n");
     TzPagingInit();
-    TzPrintString("MEM32 [OK]\n");
+    TzPrintString("  MEM32 [OK]\n");
 
     void *a = (void *)TzKernAlloc(20);
     void *b = (void *)TzKernAlloc(20);
